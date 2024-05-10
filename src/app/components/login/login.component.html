@@ -1,0 +1,73 @@
+<div class="container " >
+    <mat-card class="cardb">
+      <div class="d-flex flex-row ">
+        <div class="p-2 m-auto"  [@slideInLeft] *ngIf="this.imageVisible">
+          <h1 [style]="fonts" class="text-center">Join Us</h1>
+          <p [style]="fontsP">Add your details!</p>
+          <div class="text-center pt-1" >
+            <button mat-button color="primary" [style]="btnB" routerLink="../register" (click)="toggleImage()">REGISTER</button>
+          </div>
+  
+        </div>
+          <div class="m-5 divL"  [@slideInRight] *ngIf="this.imageVisible">
+              <h2 [style]="fonts">LOGIN To OPL</h2>
+              
+              <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+                  
+                <mat-form-field class="example-full-width pb-1">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="emailId" name="emailId" id="emailId" placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="loginForm.get('emailId')?.hasError('email')  && loginForm.get('emailId')?.touched">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('emailId')?.hasError('required') && loginForm.get('emailId')?.touched">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('emailId')?.hasError('pattern') && loginForm.get('emailId')?.touched">
+                        Email is <strong>not valid</strong>
+                      </mat-error>
+                  </mat-form-field>
+                  <mat-form-field  class="example-full-width pb-1">
+                      <mat-label>Enter your password</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="pwd">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    
+                      <mat-error *ngIf="loginForm.get('pwd')?.hasError('required') && loginForm.get('pwd')?.touched">
+                        Password is required
+                      </mat-error>
+                      <mat-error *ngIf="loginForm.get('pwd')?.hasError('minlength') && loginForm.get('pwd')?.touched">
+                        Password must be at least of 8 characters
+                      </mat-error>
+                      
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width" >
+                    <mat-label >Select Role</mat-label>
+                    <mat-select name="role" id="role" formControlName="role">
+                      <mat-option value="ROLE_ADMIN">Admin</mat-option>
+                      <mat-option value="ROLE_USER">User</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="loginForm.get('role')?.hasError('required') && loginForm.get('role')?.touched">
+                      Role is required
+                    </mat-error>
+                    
+                  </mat-form-field>
+                   
+                   
+                    <div class="d-flex flex-row justify-content-center align-items-center p-0" >
+                      <!-- <a routerLink="../register" class="text-decoration-none">
+                       <mat-icon><span class="material-symbols-outlined text-light">
+                        arrow_back
+                        </span></mat-icon> 
+                      </a> -->
+                      <a routerLink="/forgot-password-link" class="ms-auto text-decoration-none text-light" (click)="forgotClick()">Forgot Password?</a>
+                    </div>
+                    <button mat-button color="primary" [style]="btnB" class="text-center" [disabled]="loginForm.invalid">SUBMIT</button>
+              </form>
+          </div>
+  
+              
+  
+       
+  </div>

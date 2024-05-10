@@ -1,0 +1,40 @@
+<div class="container pt-2 pb-5 header" [ngStyle]="{'height':'100px'}">
+    <div class="d-flex flex-row">
+        <div class="col">
+  
+          <img src="../../assets/images.png" alt="" class="img-fluid" [style]="logo">
+        </div>
+      <div class="col- text-end">
+  
+        <button mat-fab color="primary" class="me-2" routerLink="/" aria-label="Example icon button with a home icon" >
+          <mat-icon >home</mat-icon>
+        </button>
+        <button mat-fab color="primary" *ngIf="loggedIn && role === 'ROLE_USER'" class="me-2"  (click)="profileUser()" aria-label="Example icon button with a heart icon">
+          <mat-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+          </mat-icon>
+        </button>
+        <button mat-fab color="primary" *ngIf="loggedIn && role === 'ROLE_ADMIN'" class="me-2"  (click)="profileAdmin()" aria-label="Example icon button with a heart icon">
+          <mat-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+          </mat-icon>
+        </button>
+        
+        <button *ngIf="!loggedIn" mat-fab color="primary" aria-label="Example icon button with a heart icon"  routerLink="/login">
+        <mat-icon > 
+          <span class="material-symbols-outlined">
+            login
+            </span>
+        </mat-icon>
+        </button>
+      <button mat-fab *ngIf="loggedIn" color="primary" aria-label="Example icon button with a heart icon" (click)="logoutUser()">
+          <mat-icon  > 
+            <span class="material-symbols-outlined" >
+              logout
+              </span>
+          </mat-icon>
+      </button>
+      </div>
+    </div>
+  </div>
+  

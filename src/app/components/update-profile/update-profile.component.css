@@ -1,0 +1,29 @@
+.example-form {
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .formbold-file-input {
+    display: inline;
+  }
+  
+  .formbold-file-input input {
+    opacity: 0;
+    position: absolute;
+    /* width: 100%;
+      height: 100%; */
+  }
+  
+  .formbold-browse {
+    font-weight: 500;
+    font-size: 16px;
+    color: #d6cfcf;
+    display: inline-block;
+    padding: 8px 14px;
+    background-color: #ffffff49;
+    border-radius: 50%;
+  }
+  

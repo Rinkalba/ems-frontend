@@ -1,0 +1,91 @@
+
+
+<div class="wrap animate pop position-relative">
+  <div class="overlay">
+    <div class="overlay-content animate slide-left delay-2">
+      <h4 class="animate slide-left pop delay-4">{{employee.fullName}}</h4>
+			<p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">{{employee.designation}} <em>{{employee.emailId}}</em></p>
+		</div>
+		<div class="image-content animate slide delay-5" [ngStyle]="{'background-image': 'url(' + imageSrcMap[emailId] + ')'}"></div>
+		<div class="dots animate">
+      <div class="dot animate slide-up delay-6"></div>
+			<div class="dot animate slide-up delay-7"></div>
+			<div class="dot animate slide-up delay-8"></div>
+		</div>
+	</div>
+	<div class="text">
+   
+		<mat-accordion class="example-headers-align p-5">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Personal Details
+                </mat-panel-title>
+             
+                  <mat-icon>account_circle</mat-icon>
+              
+              </mat-expansion-panel-header>
+          
+             <p class="p-0 m-0 mb-1"><b>DOB</b> {{employee.dob | date}}</p>
+             <p class="p-0 m-0 mb-1"><b>Contact No</b> +91 {{employee.contact}}</p>
+             <p class="p-0 m-0 mb-1"><b>Address</b> {{employee.address}}</p>
+              <mat-action-row >
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 Education Details
+                </mat-panel-title>
+               
+                  <mat-icon><span class="material-symbols-outlined">
+                    school
+                    </span></mat-icon>
+               
+              </mat-expansion-panel-header>
+          
+              <p class="p-0 m-0 mb-1"><b>Branch</b> {{employee.branch}}</p>
+              <p class="p-0 m-0 mb-1"><b>Year of Passing</b> {{employee.yop}}</p>
+              <p class="p-0 m-0 mb-1"><b>CGPA</b> {{employee.cgpa}}</p>
+          
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Employeement Details
+                </mat-panel-title>
+               
+                  <mat-icon><span class="material-symbols-outlined">
+                    apartment
+                    </span></mat-icon> 
+              </mat-expansion-panel-header>
+          
+            
+              <p class="p-0 m-0 mb-1"><b>Company</b> {{employee.company}}</p>
+              <p class="p-0 m-0 mb-1"><b>Designation</b> {{employee.designation}}</p>
+              <p class="p-0 m-0 mb-1"><b>Experience <span>in year</span></b> {{employee.exp}}</p>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="editUser()">Edit</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+     </mat-accordion>
+          
+     <div class="position-absolute top-100 start-50 translate-middle">
+       <mat-icon *ngIf="rolee==='ROLE_ADMIN'" class="icons" >
+         <span class="material-symbols-outlined" style="padding:16.66px;cursor: pointer; " (click)="deleteEmployee()">
+           delete
+         </span>
+       </mat-icon>
+     </div>
+	</div>
+</div>
+

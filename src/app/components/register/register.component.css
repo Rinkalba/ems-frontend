@@ -1,0 +1,29 @@
+
+
+.example-form {
+    width: 100%;
+  }
+  
+.example-full-width {
+    width: 100%;
+  }
+  
+.divL{
+  width:55%;
+}
+.cardb {
+  background-image: url("../../../assets/layered-waves-haikei.svg");
+  background-repeat: no-repeat;
+  background-size: cover; /* Cover the entire card */
+  background-position: center; /* Center the background image */
+}
+.divL {
+  /* Initial position */
+  transform: translateX(0);
+}
+
+.slideInOut {
+  /* Final position */
+  transform: translateX(-100%);
+  transition: transform 1s ease-out;
+}

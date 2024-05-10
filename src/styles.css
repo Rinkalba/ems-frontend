@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* styles.scss or styles.css */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body { 
+    height: 100%; 
+}
+body { 
+    font-family: Montserrat, "Helvetica Neue", sans-serif; 
+   /* background: url("./assets/circuit-board.svg"); */
+   background-color: rgba(202, 193, 223, 0.171); 
+   /* background: url("./assets/blobb.svg"); */
+   background: url("./assets/5570863.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   /* background-position: 60%; */
+}
+
+.toast-top-right {
+    top: 70px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+  }
+ 

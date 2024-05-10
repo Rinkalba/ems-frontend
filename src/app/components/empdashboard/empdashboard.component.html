@@ -1,0 +1,22 @@
+<!--=============== REMIXICONS ===============-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+<!--==================== PROJECTS ====================-->
+
+
+  <div class="projects__container container grid">
+    <article class="projects__card" *ngFor="let e of employees">
+      <div class="projects__image">
+        <img [src]="imageSrcMap[e.emailId]" alt="Profile Image" class="projects__img">
+        <a class="projects__button button" [routerLink]="['/full-details', e.emailId]">
+          <i class="ri-arrow-right-up-line"></i>
+        </a>
+      </div>
+      <div class="projects__content">
+        <h2 class="projects__title">{{e.emailId}}</h2>
+        <p class="projects__description">{{ e.fullName}}</p>
+      </div>
+    
+    </article>
+ 
+  </div>

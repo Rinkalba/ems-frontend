@@ -1,0 +1,159 @@
+<div class="container">
+
+  <mat-card class="cardb">
+  <h3 class="text-center mt-4">UPDATE USER</h3>
+      <mat-vertical-stepper [linear]="false" #stepper>
+          <!-- Step 1 -->
+          <mat-step [stepControl]="personalDg" class="pb-1">
+            <form [formGroup]="personalDg" >
+              <ng-template matStepLabel>Personal Details</ng-template>
+              <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="emailId" name="emailId" id="emailId" readonly>
+                </mat-form-field>
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Full Name</mat-label>
+                  <input type="text" matInput  name="fullName" id="fullName" formControlName="fullName" >
+                 
+                  <mat-error *ngIf="personalDg.get('fullName')?.hasError('required') && personalDg.get('fullName')?.touched">
+                    Full Name is required
+                  </mat-error>
+                 
+                </mat-form-field>
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Choose a birth date</mat-label>
+                  <input matInput formControlName="dob" [matDatepicker]="picker" >
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Contact</mat-label>
+                  <input type="text" matInput name="contact" id="contact" formControlName="contact" pattern="[0-9]*" maxlength="10">
+                  <!-- Add pattern="[0-9]*" and maxlength="10" to enforce numeric input and maximum length validation -->
+                
+                  <mat-error *ngIf="personalDg.get('contact')?.hasError('required') && personalDg.get('contact')?.touched">
+                    Contact is required
+                  </mat-error>
+                  <mat-error *ngIf="personalDg.get('contact')?.hasError('pattern') && personalDg.get('contact')?.touched">
+                    Contact must contain only numbers
+                  </mat-error>
+                  <!-- <mat-error *ngIf="personalDg.get('contact')?.hasError('invalidLength') && personalDg.get('contact')?.touched">
+                    Contact must be exactly 10 characters long
+                  </mat-error> -->
+                </mat-form-field>
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Address</mat-label>
+                  <textarea matInput formControlName="address" rows="2"></textarea>
+                
+                  <mat-error *ngIf="personalDg.get('address')?.hasError('required') && personalDg.get('address')?.touched">
+                    Address is required
+                  </mat-error>
+                </mat-form-field>
+                <div id="chooseFile" class="example-full-width pb-1">
+                  <div class="formbold-file-input">
+          <input type="file" formControlName="profileImg" name="profileImg" id="profileImg" (change)="onFileSelected($event)" />
+              <label for="profileImg">
+                  <div>
+               <span class="formbold-browse">
+                 <mat-icon>
+                   <span class="material-symbols-outlined">attach_file</span>
+                </mat-icon>
+            </span>
+          </div>
+             </label>
+                 </div>
+                </div>
+
+              <!-- Add other form fields for step 1 -->
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+        
+          <!-- Step 2 -->
+          <mat-step [stepControl]="educationDg"  class="pb-1">
+            <form [formGroup]="educationDg" >
+              <ng-template matStepLabel>Education Details</ng-template>
+              <mat-form-field class="example-full-width pb-1">
+                <mat-label>Branch</mat-label>
+                <input type="text" matInput  name="branch" id="branch" formControlName="branch" >
+               
+                <mat-error *ngIf="educationDg.get('branch')?.hasError('required') && educationDg.get('branch')?.touched">
+                  Branch is required
+                </mat-error>
+               
+              </mat-form-field>
+              <mat-form-field class="example-full-width pb-1">
+                <mat-label>Year of Passing</mat-label>
+                <input type="number" matInput  name="yop" id="yop" formControlName="yop" >
+               
+                <mat-error *ngIf="educationDg.get('yop')?.hasError('required') && educationDg.get('yop')?.touched">
+                  Year of Passing is required
+                </mat-error>
+               
+              </mat-form-field>
+              <mat-form-field class="example-full-width pb-1">
+                <mat-label>Cgpa</mat-label>
+                <input type="number" matInput  name="cgpa" id="cgpa" formControlName="cgpa" >
+               
+                <mat-error *ngIf="educationDg.get('cgpa')?.hasError('required') && educationDg.get('cgpa')?.touched">
+                  Year of Passing is required
+                </mat-error>
+               
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+        
+          <!-- Step 3 -->
+          <mat-step [stepControl]="experienceDg" class="pb-1">
+            <form [formGroup]="experienceDg" (ngSubmit)="onsubmit()">
+              <ng-template matStepLabel>Experience Details</ng-template>
+              <mat-form-field class="example-full-width pb-1">
+                <mat-label>Experience <span>in year</span></mat-label>
+                <input type="number" matInput  name="exp" id="exp" formControlName="exp" >
+               
+                <mat-error *ngIf="experienceDg.get('exp')?.hasError('required') && experienceDg.get('exp')?.touched">
+                 Experience is required
+                </mat-error>
+               
+              </mat-form-field>
+              <mat-form-field class="example-full-width pb-1">
+                <mat-label>Company </mat-label>
+                <input type="text" matInput  name="company" id="company" formControlName="company" >
+               
+                <mat-error *ngIf="experienceDg.get('company')?.hasError('required') && experienceDg.get('company')?.touched">
+                 Company is required
+                </mat-error>
+               
+              </mat-form-field>
+              <mat-form-field class="example-full-width pb-1">
+                <mat-label>Designation </mat-label>
+                <input type="text" matInput  name="designation" id="designation" formControlName="designation" >
+               
+                <mat-error *ngIf="experienceDg.get('designation')?.hasError('required') && experienceDg.get('designation')?.touched">
+                  Designation is required
+                </mat-error>
+               
+              </mat-form-field>
+
+              
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button type="submit" [disabled]="!isSubmitEnabled()">Submit</button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-vertical-stepper>
+  </mat-card>
+</div>
+
+
+
+
+  
